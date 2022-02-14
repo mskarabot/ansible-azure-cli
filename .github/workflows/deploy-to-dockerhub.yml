@@ -17,9 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Test environment variable for github repository
-        run: echo ${{ github.repository }}
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -38,4 +35,4 @@ jobs:
         with:
           context: "{{defaultContext}}:docker"
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.repository }}:preview
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ansible-azure-cli:preview

@@ -21,9 +21,6 @@ jobs:
       - name: Test environment variable for release version
         run: echo ${{ env.RELEASE_VERSION }}
 
-      - name: Test environment variable for github repository
-        run: echo ${{ github.repository }}
-
       - name: Checkout
         uses: actions/checkout@v2
       
@@ -45,5 +42,5 @@ jobs:
           context: "{{defaultContext}}:docker"
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{github.repository}}:${{ env.RELEASE_VERSION }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{github.repository}}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/ansible-azure-cli:${{ env.RELEASE_VERSION }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/ansible-azure-cli:latest
