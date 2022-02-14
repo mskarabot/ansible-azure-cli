@@ -18,8 +18,11 @@ jobs:
       - name: Set environment variable
         run: echo "RELEASE_VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
       
-      - name: Test environment variable
+      - name: Test environment variable for release version
         run: echo ${{ env.RELEASE_VERSION }}
+
+      - name: Test environment variable for github repository
+        run: echo ${{ github.repository }}
 
       - name: Checkout
         uses: actions/checkout@v2
