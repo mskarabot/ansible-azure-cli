@@ -1,5 +1,5 @@
-![Deploy Preview](https://github.com/skmi/ansible-azure-cli/actions/workflows/deploy-to-dockerhub.yml/badge.svg)
-![Release to DockerHub](https://github.com/skmi/ansible-azure-cli/actions/workflows/release-to-dockerhub.yml/badge.svg)
+![Deploy Preview](https://github.com/mskarabot/ansible-azure-cli/actions/workflows/deploy-to-dockerhub.yml/badge.svg)
+![Release to DockerHub](https://github.com/mskarabot/ansible-azure-cli/actions/workflows/release-to-dockerhub.yml/badge.svg)
 
 # Introduction 
 This project builds container image with Ansible and Azure CLI installed on top of CentOS 7
