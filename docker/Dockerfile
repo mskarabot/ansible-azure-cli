@@ -2,33 +2,43 @@
 # (C)2022 Mihael Skarabot, private
 #
 # Combination from:
-# https://docs.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli
-# https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=dnf
+# https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu
+# https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
 #######################################################################################################################
 
-FROM centos:7
+FROM ubuntu:20.04
 
+ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive 
 
-RUN yum check-update; \
-    yum install -y gcc libffi-devel python3 epel-release; \
-    yum install -y python3-pip; \
-    yum install -y wget; \
-    yum clean all
+# install Software Properties Common
+RUN apt update; \
+    apt upgrade --yes; \
+    apt install --yes software-properties-common
 
+# install ansible
+RUN add-apt-repository --yes --update ppa:ansible/ansible; \
+    apt install --yes ansible; \
+    ansible --version
+
+# install step-by-step azure cli
+RUN apt --yes install ca-certificates curl apt-transport-https lsb-release gnupg; \
+    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null; \
+    AZ_REPO=$(lsb_release -cs); \
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | tee /etc/apt/sources.list.d/azure-cli.list; \
+    apt update --yes; \
+    apt install --yes azure-cli
+
+# install pip3
+RUN add-apt-repository --yes --update ppa:deadsnakes/ppa; \
+    apt update; \
+    apt --yes install python3-pip; \
+    python3 --version; \
+    pip3 --version
+
+# install azure ansible collection
 RUN pip3 install --upgrade pip; \
     pip3 install --upgrade virtualenv; \
-    pip3 install pywinrm[kerberos]; \
-    pip3 install pywinrm; \
-    pip3 install jmspath; \
-    pip3 install requests; \
-    python3 -m pip install ansible; \
     ansible-galaxy collection install azure.azcollection; \
     pip3 install -r ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
-
-RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
-
-RUN echo -e "[azure-cli] \nname=Azure CLI \nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli \nenabled=1 \ngpgcheck=1 \ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/azure-cli.repo
-
-RUN yum install -y azure-cli
