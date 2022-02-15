@@ -2,15 +2,16 @@
 ![Release to DockerHub](https://github.com/mskarabot/ansible-azure-cli/actions/workflows/release-to-dockerhub.yml/badge.svg)
 
 # Introduction 
-This project builds container image with Ansible and Azure CLI installed on top of CentOS 7
+This project builds container image with Ansible, Azure CLI and Azure Ansible Collection on top of Ubuntu v20.04
 
 # Get started
-Manually building container image:
+
+### Manually build container image locally
 ```bash
 podman build docker -t ansible-azure-cli-local
 ```
 
-# Example usage of the container image
+### Example usage of the container image
 ```bash
 podman run -it --rm --name ansible-azure-cli -v /mnt/c/adev/workspace:/workspace -w="/workspace/" docker.io/skmi/ansible-azure-cli:latest
 ```
