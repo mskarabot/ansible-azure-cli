@@ -9,3 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2022-02-15
 ### Added
 - New container image created with Ansible 2.12.2, Azure CLI 2.33.1, Python 3.8.10 @mskarabot
+- CentOS and Alpine images
+
+### Changed
+- Made primary container image creation based on alpine linux @mskarabot 

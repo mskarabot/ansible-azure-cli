@@ -2,13 +2,13 @@
 ![Release to DockerHub](https://github.com/mskarabot/ansible-azure-cli/actions/workflows/release-to-dockerhub.yml/badge.svg)
 
 # Introduction 
-This project builds container image with Ansible, Azure CLI and Azure Ansible Collection on top of Ubuntu v20.04
+This project builds container image with Ansible, Azure CLI and Azure Ansible Collection on top of Alpine Linux.
 
 # Get started
 
 ### Manually build container image locally
 ```bash
-podman build docker -t ansible-azure-cli-local
+podman build docker/alpine -t ansible-azure-cli-alpine
 ```
 
 ### Example usage of the container image
