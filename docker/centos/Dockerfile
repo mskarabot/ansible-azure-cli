@@ -1,5 +1,4 @@
 #######################################################################################################################
-# (C)2022 Mihael Skarabot, private
 #
 # Combination from:
 # https://docs.microsoft.com/en-us/azure/developer/ansible/configure-in-docker-container?tabs=azure-cli

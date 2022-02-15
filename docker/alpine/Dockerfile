@@ -1,5 +1,4 @@
 #######################################################################################################################
-# (C)2022 Mihael Skarabot, private
 #
 # Combination from:
 # https://github.com/willhallonline/docker-ansible/blob/master/ansible-core/alpine315/Dockerfile

@@ -1,5 +1,4 @@
 #######################################################################################################################
-# (C)2022 Mihael Skarabot, private
 #
 # Combination from:
 # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu
