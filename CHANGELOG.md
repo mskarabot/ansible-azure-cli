@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2022-03-04
+
+### Changed
+- Update to get the latest Azure CLI @mskarabot
+
+## [1.0.1]
+
+### Changed
+- Made primary container image creation based on Ubuntu 20.04 @mskarabot
+
+## [1.0.1]
+
 ### Changed
 - Made primary container image creation based on Ubuntu 20.04 @mskarabot
 
