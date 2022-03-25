@@ -36,8 +36,16 @@ RUN add-apt-repository --yes --update ppa:deadsnakes/ppa; \
     python3 --version; \
     pip3 --version
 
-# install azure ansible collection
-RUN pip3 install --upgrade pip; \
-    pip3 install --upgrade virtualenv; \
-    ansible-galaxy collection install azure.azcollection; \
-    pip3 install -r ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt
+# install terraform
+RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor | tee /etc/apt/trusted.gpg.d/hashicorp.gpg > /dev/null; \
+    HSH_REPO=$(lsb_release -cs); \
+    echo "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $HSH_REPO main" | tee /etc/apt/sources.list.d/terraform.list; \
+    apt update --yes; \
+    apt install --yes terraform
+
+# install helm
+RUN curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/helm.gpg > /dev/null; \
+    apt-get install apt-transport-https --yes; \
+    echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list; \
+    apt update --yes; \
+    apt install --yes helm

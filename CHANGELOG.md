@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added Terraform and Helm Charts install @mskarabot
+
 ## [1.0.2] - 2022-03-04
 
 ### Changed
